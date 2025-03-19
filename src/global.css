@@ -1,0 +1,31 @@
+:root{
+    --white: #FAFAFA;
+    --grey: #5B5B5B;
+    --black: #151414;
+    --blue: #2665ED;
+    --red: #7D0909;
+
+    --font-content: 'Geist';
+    --font-random: 'Geologica';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--grey);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea, button{
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 1.5rem;
+    max-width: 31.25rem;
+    max-height: 53.25rem;
+    margin: 0 auto;
+}

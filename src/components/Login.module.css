@@ -1,0 +1,74 @@
+.background {
+    background-image: url("../assets/loginbackground.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh
+}
+
+.logo {
+    height: auto;
+    margin-top: 29.75rem;
+    margin-bottom: 0.8rem;
+}
+
+.paragraph {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: var(--font-content);
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: normal;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    flex-wrap: wrap;
+    cursor: default;
+}
+
+.getStarted {
+    margin-top: 2.75rem;
+    margin-bottom: 1.31rem;
+    width: 15rem;
+    height: 3rem;
+    border-radius: 1rem;
+    background: var(--blue);
+    color: var(--white);
+    text-align: center;
+    font-family: var(--font-random);
+    font-size: 1.0625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.getStarted:hover {
+    transform: scale(1.04);
+    background-color: #487ceb;
+}
+
+.logIn {
+    margin-bottom: 7.438rem;
+    border-radius: 1rem;
+    background: var(--grey);
+    color: var(--white);
+    width: 12rem;
+    height: 2.87rem;
+    text-align: center;
+    font-family: var(--font-random);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.logIn:hover {
+    transform: scale(1.04);
+    background-color: #8A8A8A;
+}
