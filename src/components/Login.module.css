@@ -1,12 +1,27 @@
 .background {
     background-image: url("../assets/loginbackground.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;  
+}
+
+.group {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh
+    height: 100vh;
+    animation: zoom 2s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0.8); 
+        opacity: 0.3; 
+      }
+      to {
+        transform: scale(1); 
+        opacity: 1;
+      }
 }
 
 .logo {
@@ -44,7 +59,7 @@
     font-weight: 400;
     line-height: normal;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
+    transition: 0.2s ease-in-out;
 }
 
 .getStarted:hover {
@@ -65,7 +80,7 @@
     font-weight: 400;
     line-height: normal;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
+    transition: 0.2s ease-in-out;
 }
 
 .logIn:hover {
