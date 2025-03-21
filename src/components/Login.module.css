@@ -1,89 +1,126 @@
 .background {
-    background-image: url("../assets/loginbackground.png");
+    background-image: url("../assets/loginbackground2.png");
     background-repeat: no-repeat;
-    background-size: cover;  
-}
-
-.group {
+    background-size: cover;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     height: 100vh;
-    animation: zoom 2s;
 }
 
-@keyframes zoom {
-    from {
-        transform: scale(0.8); 
-        opacity: 0.3; 
-      }
-      to {
-        transform: scale(1); 
-        opacity: 1;
-      }
+.backButton {
+    width: 4rem;
+    height: 3.8rem;
+    border-radius: 1.375rem;
+    color: var(--white);
+    border: none;
+    margin-top: 3rem;
+    margin-left: 2rem;
+    padding-top: 0.4rem;
+    border: 1px solid var(--grey);
+    background-color: rgba(20, 21, 20, 0.9);
+    cursor: pointer;
 }
 
-.logo {
-    height: auto;
-    margin-top: 29.75rem;
+.firstTitle {
+    font-size: 2.5rem;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 15rem;
 }
 
-.paragraph {
-    align-items: center;
-    justify-content: center;
+
+h1 {
+    color: var(--white);
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: normal;
     text-align: center;
+}
+
+p {
+    color: var(--white);
     font-family: var(--font-content);
     font-size: 1.1rem;
     font-weight: 300;
     line-height: normal;
-    margin-left: 6rem;
-    margin-right: 6rem;
-    flex-wrap: wrap;
-    cursor: default;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+
 }
 
-.getStarted {
-    margin-top: 0.5rem;
-    margin-bottom: 1.31rem;
-    width: 19rem;
-    height: 3.7rem;
+.placeholder {
+    width: 23rem;
+    height: 3rem;
     border-radius: 1rem;
-    background: var(--blue);
+    background: var(--white);
+    margin-bottom: 0.85rem;
+
+    color: var(--grey);
+    font-family: var(--font-content);
+    font-size: 1.0625rem;
+    font-weight: 300;
+    line-height: normal;
+    padding-left: 1rem;
+    border: 1px solid #707070;
+}
+
+.submitButton {
+    width: 18rem;
+    height: 3.5rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    background-color: var(--blue);
+    cursor: pointer;
+
     color: var(--white);
     text-align: center;
     font-family: var(--font-random);
     font-size: 1.2rem;
-    font-style: normal;
     font-weight: 400;
     line-height: normal;
-    cursor: pointer;
     transition: 0.2s ease-in-out;
-
+    border: none;
+    margin-bottom: 2rem;
 }
 
-.getStarted:hover {
-    transform: scale(1.04);
+.submitButton:hover {
     background-color: #487ceb;
-}
-
-.logIn {
-    margin-bottom: 7.438rem;
-    border-radius: 1rem;
-    background: var(--grey);
-    color: var(--white);
-    width: 15rem;
-    height: 3.2rem;
-    text-align: center;
-    font-family: var(--font-random);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: normal;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-}
-
-.logIn:hover {
     transform: scale(1.04);
-    background-color: #8A8A8A;
+}
+
+
+.googleButton {
+    width: 14.1875rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    background: var(--white);
+
+    color: var(--grey);
+    font-family: var(--font-content);
+    font-size: 1.0625rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+
+    padding: 0 0 0 1.5rem;
+
+
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-position: 20px 17px;
+
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    border: 1px solid #707070;
+    margin-top: 2rem;
+    
+}
+
+.googleButton:hover {
+    background-color: #ffffff;
+    transform: scale(1.04);
 }

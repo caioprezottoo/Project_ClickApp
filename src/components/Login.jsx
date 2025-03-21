@@ -1,25 +1,40 @@
-import Logo from '../assets/logo.png'
+import React from 'react'
 import styles from './Login.module.css'
 
-import { Link } from 'react-router-dom'
+import { Loading } from './Loading'
 
-export function Login() {
+import { Link } from'react-router-dom'
+
+import { ArrowLeft } from 'phosphor-react';
+
+export const Login = () => {
     return (
         <div className={styles.background}>
+
             <title>Login - Click</title>
+            <Loading />
 
-            <div className={styles.group}>
-                <img src={Logo} alt="logo 'Click'" className={styles.logo} />
+            <Link to="/">
+                <button className={styles.backButton}><ArrowLeft size={29} /></button>
+            </Link>
 
-                <p className={styles.paragraph}>Get ready to review your favorite movies and series.</p>
+            <h1 className={styles.firstTitle}>Welcome Back!</h1>
+            <p>Log in to enjoy the ultimate reviewing app in the whole world wide web!</p>
 
-                <Link to="/LoginRegistration">
-                    <button className={styles.getStarted}>Get Started</button>
-                </Link>
-                <Link to="/LoginRegistration">
-                    <button className={styles.logIn}>Log in</button>
-                </Link>
-            </div>
+            <input
+                placeholder='Email'
+                className={styles.placeholder}
+            />
+            <input
+                placeholder='Password'
+                className={styles.placeholder}
+            />
+            <button
+                className={styles.submitButton}
+            >Submit</button>
+
+            <h1 className={styles.spanH1}>or</h1>
+            <button className={styles.googleButton}>Log in with Google</button>
         </div>
     )
 }
