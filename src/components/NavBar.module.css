@@ -1,0 +1,30 @@
+.divNavBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ulNavBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+
+    background-color: var(--grey);
+    border-radius: 1.375rem;
+    list-style-type: none;
+    width: 19rem;
+    height: 4rem;
+}
+
+.nav li.active {
+    cursor: default;
+}
+
+.icoNavBar {
+    background-color: transparent;
+    border: none;
+    color: var(--black);
+    cursor: pointer;
+}

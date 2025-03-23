@@ -1,0 +1,14 @@
+.movieDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    
+}
+
+img {
+    width: 25rem;
+    height: 39rem;
+    border-radius: 12px;
+}

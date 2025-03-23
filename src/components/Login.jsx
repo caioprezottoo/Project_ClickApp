@@ -1,13 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Login.module.css'
 
 import { Loading } from './Loading'
 
-import { Link } from'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { ArrowLeft } from 'phosphor-react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../config/firebase';
+
+import { toast } from 'react-toastify';
+
+import { SignInWithGoogle } from './SignInWithGoogle';
+
 
 export const Login = () => {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+            toast.success("User registration successful", {
+                position: "top-center",
+            })
+            window.location.href= "/Home"
+        } catch (error) {
+            console.error(error.message);
+            toast.error(error.message, {
+                position: "top-center",
+            })
+        }
+    }
+
     return (
         <div className={styles.background}>
 
@@ -24,17 +51,23 @@ export const Login = () => {
             <input
                 placeholder='Email'
                 className={styles.placeholder}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
             />
             <input
                 placeholder='Password'
                 className={styles.placeholder}
+                type='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
             />
             <button
                 className={styles.submitButton}
+                onClick={handleSubmit}
             >Submit</button>
 
-            <h1 className={styles.spanH1}>or</h1>
-            <button className={styles.googleButton}>Log in with Google</button>
+            <SignInWithGoogle />
+            
         </div>
     )
 }

@@ -10,6 +10,8 @@ import { auth, db } from '../config/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 
+import { SignInWithGoogle } from './SignInWithGoogle'
+
 export function LoginRegistration() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -62,6 +64,7 @@ export function LoginRegistration() {
                 />
                 <input
                     placeholder='Password'
+                    type='password'
                     className={styles.placeholder}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -71,8 +74,7 @@ export function LoginRegistration() {
                     onClick={handleRegister}
                 >Submit</button>
 
-                <h1 className={styles.spanH1}>or</h1>
-                <button className={styles.googleButton}>Sign in with Google</button>
+                <SignInWithGoogle />
 
             </div>
 

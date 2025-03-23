@@ -87,40 +87,4 @@ p {
     margin-bottom: 2rem;
 }
 
-.submitButton:hover {
-    background-color: #487ceb;
-    transform: scale(1.04);
-}
 
-
-.googleButton {
-    width: 14.1875rem;
-    height: 3.5rem;
-    border-radius: 1rem;
-    background: var(--white);
-
-    color: var(--grey);
-    font-family: var(--font-content);
-    font-size: 1.0625rem;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-
-    padding: 0 0 0 1.5rem;
-
-
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
-    background-repeat: no-repeat;
-    background-position: 20px 17px;
-
-    transition: 0.2s ease-in-out;
-    cursor: pointer;
-    border: 1px solid #707070;
-    margin-top: 2rem;
-    
-}
-
-.googleButton:hover {
-    background-color: #ffffff;
-    transform: scale(1.04);
-}

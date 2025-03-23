@@ -62,11 +62,6 @@
 
 }
 
-.getStarted:hover {
-    transform: scale(1.04);
-    background-color: #487ceb;
-}
-
 .logIn {
     margin-bottom: 7.438rem;
     border-radius: 1rem;
@@ -81,9 +76,4 @@
     line-height: normal;
     cursor: pointer;
     transition: 0.2s ease-in-out;
-}
-
-.logIn:hover {
-    transform: scale(1.04);
-    background-color: #8A8A8A;
 }
