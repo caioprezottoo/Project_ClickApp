@@ -3,9 +3,11 @@ import React from 'react'
 import { NavBar } from './NavBar'
 import { Loading } from './Loading'
 
-export const FilmList = () => {
+import styles from './MovieList.module.css'
+
+export const MovieList = () => {
   return (
-    <div>
+    <div className={styles.movielistdiv}>
         <Loading />
         <h1>List of Films</h1>
         <NavBar />

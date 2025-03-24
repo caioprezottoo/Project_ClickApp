@@ -16,10 +16,14 @@ export function Loading() {
     return (
         <div>
             {isLoading && (
-                <div className={styles.loader_wrapper}>
-                    <span className={styles.loader}><span className={styles.loader_inner}></span></span>
+                <div className={styles.loadingDiv}>
+                    <svg className={styles.svg} viewBox="25 25 50 50">
+                        <circle className={styles.circle} r="20" cy="50" cx="50"></circle>
+                    </svg>
                 </div>
             )}
         </div>
     )
 }
+
+

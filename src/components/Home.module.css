@@ -2,33 +2,38 @@
     background-color: var(--black);
     height: 100vh;
     border: 1px solid transparent;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .homeH1 {
     color: var(--white);
     font-family: var(--font-title);
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     line-height: normal;
     text-align: center;
 
-    margin-top: 4.5rem;    
     cursor: default;
 }
 
-.buttonsDiv{
+.buttonsDiv {
     display: flex;
     flex-direction: row;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    gap: 3rem;
 }
 
 .watchedButton {
-    width: 12rem;
+    width: 10rem;
     height: 3.7rem;
     border-radius: 1.375rem;
-    background: #2665ED;
-    padding-right: 2.2rem;
-    padding-left: 2.2rem;
+    background: var(--blue);
+    padding-right: 1.7rem;
+    padding-left: 1.7rem;
 
     color: var(--white);
     font-family: var(--font-content);
@@ -41,19 +46,28 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+
+    outline: none;
+    transition: all ease 0.1s;
+    box-shadow: 0px 5px 0px 0px #5e8ae9;
+}
+
+.watchedButton:active {
+    transform: translateY(5px);
+    box-shadow: 0px 0px 0px 0px #a29bfe;
 }
 
 .didntwatchButton {
-    width: 12rem;
+    width: 10rem;
     height: 3.7rem;
     border-radius: 1.375rem;
-    background: #7D0909;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    background: var(--red);
+    padding-right: 1rem;
+    padding-left: 1rem;
 
     color: var(--white);
     font-family: var(--font-content);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 300;
     line-height: normal;
     border: none;
@@ -62,4 +76,13 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+
+    outline: none;
+    transition: all ease 0.1s;
+    box-shadow: 0px 5px 0px 0px #b34d4d;
+}
+
+.didntwatchButton:active {
+    transform: translateY(5px);
+    box-shadow: 0px 0px 0px 0px #a29bfe;
 }

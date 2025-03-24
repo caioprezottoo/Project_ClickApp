@@ -3,8 +3,6 @@ import styles from './Home.module.css'
 import { Eye, EyeSlash } from 'phosphor-react';
 
 import { Loading } from './Loading'
-import { signOut } from 'firebase/auth'
-import { auth } from '../config/firebase'
 
 import { Movie } from './Movie';
 import { NavBar } from './NavBar';
@@ -20,21 +18,12 @@ export const Home = () => {
         },
     ])
 
-    const logOut = async () => {
-        try {
-            await signOut(auth)
-            window.location.href = "/"
-        } catch (error) {
-            console.error(error)
-        }
-    }
 
     return (
         <div className={styles.background}>
             <title>Home - Click</title>
             <Loading />
 
-            <h1 className={styles.homeH1}>Home</h1>
             <span>
                 <Movie movies={movies} />
             </span>
@@ -44,10 +33,6 @@ export const Home = () => {
             </div>
 
             <NavBar />
-
-            <button onClick={logOut}>Log out</button>
-
-
         </div>
     )
 }
