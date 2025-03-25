@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 .ulNavBar {
@@ -13,9 +12,9 @@
     padding: 0 2rem;
 
     background-color: var(--grey);
-    border-radius: 22px;
+    border-radius: 12px;
     list-style-type: none;
-    width: 19rem;
+    width: 22rem;
     height: 4rem;
 }
 
@@ -24,12 +23,27 @@
     border: none;
     color: #383838;
     cursor: pointer;
-
+    display: flex;
+    justify-content: center;
     outline: none;
     transition: all ease 0.1s;
+
+}
+
+.pNavBar {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #383838;
+    visibility: hidden;
 }
 
 .selected {
     color: var(--white);
+    visibility: visible;
 
+}
+
+.liNavBar {
+    display: flex;
+    flex-direction: column;
 }

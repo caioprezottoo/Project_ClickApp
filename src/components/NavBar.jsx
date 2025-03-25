@@ -1,5 +1,5 @@
 import React from 'react';
-import { House, List, User } from 'phosphor-react';
+import { FilmSlate, ListHeart, User, Star } from '@phosphor-icons/react/dist/ssr';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './NavBar.module.css';
 
@@ -9,22 +9,23 @@ export const NavBar = () => {
 
     return (
         <div className={styles.divNavBar}>
-            <nav className={styles.nav}>
+            <nav>
                 <ul className={styles.ulNavBar}>
-                    <li>
+                    <li className={styles.liNavBar}>
                         <Link
                             to="/Home"
                             className={`${styles.icoNavBar} ${activeRoute === '/Home' ? styles.selected : ''}`}
                         >
-                            <House size={29} />
+                            <FilmSlate size={27} />
                         </Link>
+                        <p className={`${styles.pNavBar} ${activeRoute === '/Home' ? styles.selected : ''}`}>Movies</p>
                     </li>
                     <li>
                         <Link
                             to="/MovieList"
                             className={`${styles.icoNavBar} ${activeRoute === '/MovieList' ? styles.selected : ''}`}
                         >
-                            <List size={29} />
+                            <Star size={27} />
                         </Link>
                     </li>
                     <li>
@@ -32,7 +33,15 @@ export const NavBar = () => {
                             to="/Profile"
                             className={`${styles.icoNavBar} ${activeRoute === '/Profile' ? styles.selected : ''}`}
                         >
-                            <User size={29} />
+                            <ListHeart size={27} />
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/Profile"
+                            className={`${styles.icoNavBar} ${activeRoute === '/Profile' ? styles.selected : ''}`}
+                        >
+                            <User size={27} />
                         </Link>
                     </li>
                 </ul>

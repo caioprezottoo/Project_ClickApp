@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './Home.module.css'
-import { Eye, EyeSlash } from 'phosphor-react';
+import { Eye, EyeSlash, Plus } from 'phosphor-react';
 
 import { Loading } from './Loading'
 
@@ -29,10 +29,14 @@ export const Home = () => {
             </span>
             <div className={styles.buttonsDiv}>
                 <button className={styles.watchedButton}><Eye size={32} /> Watched </button>
+                <button className={styles.addButton}><Plus size={24} weight="bold" /></button>
                 <button className={styles.didntwatchButton}><EyeSlash size={32} /> Didn't Watch</button>
             </div>
+
+
 
             <NavBar />
         </div>
     )
 }
+

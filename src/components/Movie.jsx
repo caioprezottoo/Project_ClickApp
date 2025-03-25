@@ -8,6 +8,9 @@ export const Movie = (props) => {
             {props.movies.map((movie, index) => <div>
                 <img src={movie.Poster} alt='movie'></img>
             </div>)}
+            {props.movies.map((movie, index) => <div>
+                <h2>{movie.Title}</h2>
+            </div>)}
         </div>
     )
 }
