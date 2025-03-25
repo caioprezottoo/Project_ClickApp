@@ -22,7 +22,6 @@ export const Home = () => {
     return (
         <div className={styles.background}>
             <title>Home - Click</title>
-            <Loading />
 
             <span>
                 <Movie movies={movies} />

@@ -69,11 +69,11 @@ p {
 }
 
 .submitButton {
-    width: 18rem;
-    height: 3.5rem;
+    width: 15rem;
+    height: 3rem;
     margin-top: 1rem;
     border-radius: 1rem;
-    background-color: var(--blue);
+    background: var(--gradient);
     cursor: pointer;
 
     color: var(--white);

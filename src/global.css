@@ -1,9 +1,10 @@
 :root{
     --white: #FAFAFA;
     --grey: #5B5B5B;
-    --black: #151414;
+    --black: #1d1c1c;
     --blue: #2665ED;
-    --red: #7D0909;
+    --red: linear-gradient(90deg, #E31010 0%, #9B0101 99.99%);
+    --gradient: linear-gradient(90deg, #2665ED 0%, #163A87 100%);
 
     --font-title: 'Inter';
     --font-content: 'Geist';
@@ -17,7 +18,7 @@
 }
 
 body {
-    background: #202020;
+    background: #3a3a3a;
     color: var(--white);
     -webkit-font-smoothing: antialiased;
 }
@@ -26,7 +27,7 @@ body, input, textarea, button{
     font-family: var(--font-title);
     font-weight: 700;
     font-size: 1.5rem;
-    max-width: 500px;
-    max-height: 800px;
+    max-width: 450px;
+    max-height: 100vh;
     margin: 0 auto;
 }

@@ -23,10 +23,17 @@ export const Login = () => {
 
         try {
             await signInWithEmailAndPassword(auth, email, password)
-            toast.success("User registration successful", {
-                position: "top-center",
-            })
-            window.location.href= "/Home"
+            const user = auth.currentUser;
+            if (user.emailVerified) {
+                toast.success("User log in successful", {
+                    position: "top-center",
+                })
+                window.location.href = "/Home"
+            } else {
+                toast.error("Email not verified. Please verify your email.", {
+                    position: "top-center",
+                })
+            }
         } catch (error) {
             console.error(error.message);
             toast.error(error.message, {
@@ -67,7 +74,7 @@ export const Login = () => {
             >Submit</button>
 
             <SignInWithGoogle />
-            
+
         </div>
     )
 }

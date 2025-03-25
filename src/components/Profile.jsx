@@ -17,7 +17,6 @@ export const Profile = () => {
     }
     return (
         <div>
-            <Loading />
 
             <title>Profile - Click</title>
             <button onClick={logOut}>Log out</button>

@@ -11,8 +11,8 @@
     justify-content: space-between;
     padding: 0 2rem;
 
-    background-color: var(--grey);
-    border-radius: 12px;
+    background-color: #2c2b2b;
+    border-radius: 22px;
     list-style-type: none;
     width: 22rem;
     height: 4rem;
@@ -21,26 +21,21 @@
 .icoNavBar {
     background-color: transparent;
     border: none;
-    color: #383838;
+    color: var(--white);
     cursor: pointer;
     display: flex;
     justify-content: center;
     outline: none;
     transition: all ease 0.1s;
-
-}
-
-.pNavBar {
-    margin: 0;
-    font-size: 0.8rem;
-    color: #383838;
-    visibility: hidden;
 }
 
 .selected {
     color: var(--white);
-    visibility: visible;
-
+    background-color: #383838;
+    border-radius: 22px;
+    padding: 0.2rem 1rem;
+    align-items: center;
+    transform: scale(1.2);
 }
 
 .liNavBar {

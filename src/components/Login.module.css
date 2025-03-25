@@ -26,9 +26,8 @@
     margin-left: 2rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
-    margin-top: 15rem;
+    margin-top: 11rem;
 }
-
 
 h1 {
     color: var(--white);
@@ -69,11 +68,11 @@ p {
 }
 
 .submitButton {
-    width: 18rem;
-    height: 3.5rem;
+    width: 15rem;
+    height: 3rem;
     margin-top: 1rem;
     border-radius: 1rem;
-    background-color: var(--blue);
+    background: var(--gradient);
     cursor: pointer;
 
     color: var(--white);
@@ -86,5 +85,3 @@ p {
     border: none;
     margin-bottom: 2rem;
 }
-
-

@@ -26,7 +26,7 @@
 
 .logo {
     height: auto;
-    width: 14rem;
+    width: 12rem;
     margin-top: 29.75rem;
 }
 
@@ -35,41 +35,42 @@
     justify-content: center;
     text-align: center;
     font-family: var(--font-content);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 300;
     line-height: normal;
-    margin-left: 6rem;
-    margin-right: 6rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
     flex-wrap: wrap;
     cursor: default;
 }
 
 .getStarted {
     margin-top: 0.5rem;
-    margin-bottom: 1.31rem;
-    width: 19rem;
-    height: 3.7rem;
-    border-radius: 1rem;
-    background: var(--blue);
+    margin-bottom: 1.4rem;
+    width: 20rem;
+    height: 3rem;
+    border-radius: 16px;
+    background: var(--gradient);
     color: var(--white);
     text-align: center;
     font-family: var(--font-random);
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+    border: none;
 
 }
 
 .logIn {
     margin-bottom: 7.438rem;
-    border-radius: 1rem;
-    background: var(--grey);
+    border-radius: 16px;
+    background: transparent;
     color: var(--white);
-    width: 15rem;
-    height: 3.2rem;
+    width: 20rem;
+    height: 2.8rem;
     text-align: center;
     font-family: var(--font-random);
     font-size: 1rem;
@@ -77,4 +78,5 @@
     line-height: normal;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+    border: 1px solid var(--blue);
 }

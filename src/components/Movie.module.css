@@ -15,5 +15,6 @@ h2 {
     text-align: center;
     font-size: 1.2rem;
     margin: 0.7rem 0;
-    font-family: var(--font-random);
+    font-family: var(--font-content);
+    font-weight: 400;
 }

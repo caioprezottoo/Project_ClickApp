@@ -16,33 +16,35 @@ export const NavBar = () => {
                             to="/Home"
                             className={`${styles.icoNavBar} ${activeRoute === '/Home' ? styles.selected : ''}`}
                         >
-                            <FilmSlate size={27} />
+                            <FilmSlate size={20} />
                         </Link>
-                        <p className={`${styles.pNavBar} ${activeRoute === '/Home' ? styles.selected : ''}`}>Movies</p>
                     </li>
                     <li>
                         <Link
-                            to="/MovieList"
-                            className={`${styles.icoNavBar} ${activeRoute === '/MovieList' ? styles.selected : ''}`}
+                            to="/Reviewed"
+                            className={`${styles.icoNavBar} ${activeRoute === '/Reviewed' ? styles.selected : ''}`}
                         >
-                            <Star size={27} />
+                            <Star size={20} />
                         </Link>
+
+                    </li>
+                    <li>
+                        <Link
+                            to="/Favorites"
+                            className={`${styles.icoNavBar} ${activeRoute === '/Favorites' ? styles.selected : ''}`}
+                        >
+                            <ListHeart size={20} />
+                        </Link>
+
                     </li>
                     <li>
                         <Link
                             to="/Profile"
                             className={`${styles.icoNavBar} ${activeRoute === '/Profile' ? styles.selected : ''}`}
                         >
-                            <ListHeart size={27} />
+                            <User size={20} />
                         </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/Profile"
-                            className={`${styles.icoNavBar} ${activeRoute === '/Profile' ? styles.selected : ''}`}
-                        >
-                            <User size={27} />
-                        </Link>
+
                     </li>
                 </ul>
             </nav>

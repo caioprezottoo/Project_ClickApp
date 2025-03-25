@@ -8,8 +8,9 @@ import { ToastContainer } from'react-toastify'
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Home } from './components/Home'
-import { MovieList } from './components/MovieList'
+import { Reviewed } from './components/Reviewed'
 import { Profile } from './components/Profile'
+import { Favorites } from './components/Favorites'
 
 export function App() {
   return (
@@ -20,8 +21,9 @@ export function App() {
           <Route path='/LoginRegistration' element={<LoginRegistration />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Home' element={<Home />} />
-          <Route path='/MovieList' element={<MovieList />} />
+          <Route path='/Reviewed' element={<Reviewed />} />
           <Route path='/Profile' element={<Profile />} />
+          <Route path='/Favorites' element={<Favorites />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />

@@ -5,11 +5,10 @@ import { ArrowLeft } from 'phosphor-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth, db } from '../config/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
-
 import { SignInWithGoogle } from './SignInWithGoogle'
 
 export function LoginRegistration() {
@@ -28,8 +27,9 @@ export function LoginRegistration() {
                     email: user.email,
 
                 });
+                await sendEmailVerification(user);
             }
-            toast.success("User registration successful", {
+            toast.success("A verification was sent to your email!", {
                 position: "top-center",
             })
         } catch (error) {
