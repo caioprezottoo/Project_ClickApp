@@ -1,5 +1,5 @@
 .background {
-    background-color: var(--black);
+    background: var(--black);
     height: 100vh;
 
     display: flex;

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth, db } from '../config/firebase';
-import { setDoc, doc } from 'firebase/firestore';
+import { setDoc, doc, query, where, getDocs, collection } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { SignInWithGoogle } from './SignInWithGoogle'
 
@@ -19,27 +19,34 @@ export function LoginRegistration() {
         e.preventDefault();
 
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
-            const user = auth.currentUser;
-            console.log(user);
+            const usersRef = collection(db, 'users');
+            const q = query(usersRef, where("email", "==", email));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                toast.error("This email is already registered.", {
+                    position: "top-center",
+                });
+                return;
+            }
+
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
             if (user) {
                 await setDoc(doc(db, 'users', user.uid), {
                     email: user.email,
-
                 });
                 await sendEmailVerification(user);
+                toast.success("A verification was sent to your email!", {
+                    position: "top-center",
+                });
             }
-            toast.success("A verification was sent to your email!", {
-                position: "top-center",
-            })
         } catch (error) {
             toast.error(error.message, {
                 position: "top-center",
-            })
-
+            });
         }
-
-
     }
 
     return (
