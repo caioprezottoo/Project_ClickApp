@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
-import styles from './Login.module.css'
+import React, { useState } from 'react';
+import styles from './Login.module.css';
 
-import { Loading } from './Loading'
-
-import { Link } from 'react-router-dom'
-
+import { Loading } from './Loading';
 import { ArrowLeft } from 'phosphor-react';
+
+import { Link } from 'react-router-dom';
+
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
-
-import { toast } from 'react-toastify';
-
 import { SignInWithGoogle } from './SignInWithGoogle';
-
+import { toast } from 'react-toastify';
 
 export const Login = () => {
     const [email, setEmail] = useState("")

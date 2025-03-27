@@ -1,7 +1,8 @@
 :root{
     --white: #FAFAFA;
     --grey: #5B5B5B;
-    --black: linear-gradient(0deg, #151414 0%, #333 100%);
+    --black: linear-gradient(0deg, #151414 0%, #242424 100%);
+    --full-black: #151414;
     --blue: #2665ED;
     --red: linear-gradient(90deg, #E31010 0%, #9B0101 99.99%);
     --gradient: linear-gradient(90deg, #2665ED 0%, #163A87 100%);

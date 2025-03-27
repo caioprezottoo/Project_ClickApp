@@ -2,6 +2,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+
 }
 
 .ulNavBar {
@@ -31,11 +34,12 @@
 
 .selected {
     color: var(--white);
-    background-color: #383838;
+    background-color: #4d4c4c;
     border-radius: 22px;
-    padding: 0.2rem 1rem;
+    padding: 0.3rem 0.8rem;
     align-items: center;
     transform: scale(1.2);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
 .liNavBar {

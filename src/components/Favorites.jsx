@@ -1,11 +1,13 @@
-import React from 'react'
-import { NavBar } from './NavBar'
+import React from 'react';
+import { NavBar } from './NavBar';
+import { Loading } from './Loading';
 
 export const Favorites = () => {
   return (
     <div>
-        Favorites
-        <NavBar />
+      <Loading />
+      Favorites
+      <NavBar />
     </div>
   )
 }

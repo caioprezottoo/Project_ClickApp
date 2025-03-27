@@ -1,10 +1,10 @@
-import React from 'react'
-import { NavBar } from './NavBar'
+import React from 'react';
+import { NavBar } from './NavBar';
 
-import { signOut } from 'firebase/auth'
-import { auth } from '../config/firebase'
+import { signOut } from 'firebase/auth';
+import { auth } from '../config/firebase';
 
-import { Loading } from './Loading'
+import { Loading } from './Loading';
 
 export const Profile = () => {
     const logOut = async () => {
@@ -17,6 +17,7 @@ export const Profile = () => {
     }
     return (
         <div>
+            <Loading />
 
             <title>Profile - Click</title>
             <button onClick={logOut}>Log out</button>

@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import styles from './Home.module.css'
+import React, { useEffect, useState } from 'react';
+import styles from './Home.module.css';
 import { Eye, EyeSlash, Plus } from 'phosphor-react';
 
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
 import { Movie } from './Movie';
 import { NavBar } from './NavBar';
+import { Loading } from './Loading';
 
 export const Home = () => {
     const [movies, setMovies] = useState([]);
@@ -36,7 +37,7 @@ export const Home = () => {
     };
 
     if (movies.length === 0) {
-        return <div>Loading movies...</div>;
+        return <div><Loading /></div>;
     }
 
     const currentMovie = movies[currentMovieIndex];

@@ -1,15 +1,15 @@
-import styles from './LoginRegistration.module.css'
-import { Loading } from './Loading'
+import styles from './LoginRegistration.module.css';
+import { Loading } from './Loading';
 import { ArrowLeft } from 'phosphor-react';
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth, db } from '../config/firebase';
 import { setDoc, doc, query, where, getDocs, collection } from 'firebase/firestore';
 import { toast } from 'react-toastify';
-import { SignInWithGoogle } from './SignInWithGoogle'
+import { SignInWithGoogle } from './SignInWithGoogle';
 
 export function LoginRegistration() {
     const [email, setEmail] = useState("");

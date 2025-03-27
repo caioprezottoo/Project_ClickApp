@@ -1,7 +1,7 @@
-import Logo from '../assets/logo.png'
-import styles from './InitialPage.module.css'
+import Logo from '../assets/logo.png';
+import styles from './InitialPage.module.css';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export function InitialPage() {
     return (

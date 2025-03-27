@@ -1,6 +1,5 @@
-import styles from './Loading.module.css'
-import React, { useState, useEffect } from 'react'
-
+import styles from './Loading.module.css';
+import React, { useState, useEffect } from 'react';
 
 export function Loading() {
     const [isLoading, setIsLoading] = useState(true);
@@ -8,7 +7,7 @@ export function Loading() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 1000);
+        }, 600);
 
         return () => clearTimeout(timer);
     }, []);

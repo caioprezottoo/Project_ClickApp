@@ -1,7 +1,8 @@
 import React from 'react';
+import styles from './NavBar.module.css';
+
 import { FilmSlate, ListHeart, User, Star } from '@phosphor-icons/react/dist/ssr';
 import { Link, useLocation } from 'react-router-dom';
-import styles from './NavBar.module.css';
 
 export const NavBar = () => {
     const location = useLocation();

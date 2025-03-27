@@ -48,6 +48,8 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
 }
 
 .didntwatchButton {
@@ -69,6 +71,8 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+
 }
 
 .addButton {
