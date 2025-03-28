@@ -17,7 +17,7 @@ export const NavBar = () => {
                             to="/Home"
                             className={`${styles.icoNavBar} ${activeRoute === '/Home' ? styles.selected : ''}`}
                         >
-                            <FilmSlate size={20} />
+                            <FilmSlate size={24} />
                         </Link>
                     </li>
                     <li>
@@ -25,7 +25,7 @@ export const NavBar = () => {
                             to="/Reviewed"
                             className={`${styles.icoNavBar} ${activeRoute === '/Reviewed' ? styles.selected : ''}`}
                         >
-                            <Star size={20} />
+                            <Star size={24} />
                         </Link>
 
                     </li>
@@ -34,7 +34,7 @@ export const NavBar = () => {
                             to="/Favorites"
                             className={`${styles.icoNavBar} ${activeRoute === '/Favorites' ? styles.selected : ''}`}
                         >
-                            <ListHeart size={20} />
+                            <ListHeart size={24} />
                         </Link>
 
                     </li>
@@ -43,7 +43,7 @@ export const NavBar = () => {
                             to="/Profile"
                             className={`${styles.icoNavBar} ${activeRoute === '/Profile' ? styles.selected : ''}`}
                         >
-                            <User size={20} />
+                            <User size={24} />
                         </Link>
 
                     </li>

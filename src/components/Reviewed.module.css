@@ -1,4 +1,65 @@
 .movielistdiv {
-    background-color: var(--black);
-    height: 100vh;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+.movielistdiv h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.noReviews {
+    color: #666;
+    margin-top: 50px;
+}
+
+.reviewList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.reviewItem {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.reviewContent {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.reviewContent h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.ratingDisplay {
+    display: flex;
+}
+
+.deleteButton {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.deleteButton:hover {
+    background-color: #ff3333;
 }

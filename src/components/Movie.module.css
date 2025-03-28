@@ -3,14 +3,14 @@
     flex-direction: column;
     align-items: center;
     width: 22rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 img {
     width: 22rem;
     height: 33rem;
     border-radius: 22px;
-    margin-bottom: 0.7rem; 
+    margin-bottom: 0; 
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8));
     object-fit: cover;
 }
@@ -22,9 +22,9 @@ h2 {
     font-weight: 400;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8));
     max-width: 100%;
-    overflow-wrap: break-word; /* Preferred over word-wrap */
-    line-height: 1.4; /* Provides consistent line spacing */
-    height: 2.8rem; /* Fixed height to prevent layout shifts */
+    overflow-wrap: break-word;
+    line-height: 1.4; 
+    height: 2.8rem; 
     display: flex;
     align-items: center;
     justify-content: center;
