@@ -4,7 +4,7 @@ import { Loading } from './Loading';
 import { NavBar } from './NavBar';
 import { collection, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { db, auth } from '../config/firebase';
-import { Star, Trash } from 'phosphor-react';
+import { Star, X } from 'phosphor-react';
 
 export const Reviewed = () => {
   const [reviews, setReviews] = useState([]);
@@ -55,13 +55,17 @@ export const Reviewed = () => {
 
   return (
     <div className={styles.movielistdiv}>
-      <h1>Reviewed Movies</h1>
+      <h1>Already Watched & Reviewed</h1>
       {reviews.length === 0 ? (
         <p className={styles.noReviews}>No movies reviewed yet</p>
       ) : (
         <div className={styles.reviewList}>
           {reviews.map((review) => (
             <div key={review.id} className={styles.reviewItem}>
+              <img
+                src={review.movieCover}
+                className={styles.movieImage}
+              />
               <div className={styles.reviewContent}>
                 <h3>{review.movieTitle}</h3>
                 <div className={styles.ratingDisplay}>
@@ -87,7 +91,7 @@ export const Reviewed = () => {
                 className={styles.deleteButton}
                 onClick={() => handleDeleteReview(review.id)}
               >
-                <Trash size={24} />
+                <X size={18} />
               </button>
             </div>
           ))}

@@ -1,46 +1,77 @@
 .movielistdiv {
-    background-color: #f4f4f4;
+    background: var(--black);
     min-height: 100vh;
-    padding: 20px;
+    padding: 3rem 1.25rem;
     text-align: center;
 }
 
 .movielistdiv h1 {
-    color: #333;
-    margin-bottom: 20px;
+    color: var(--white);
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0 3rem 3rem 3rem;
 }
 
 .noReviews {
-    color: #666;
-    margin-top: 50px;
+    color: var(--grey);
 }
 
 .reviewList {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    max-width: 500px;
     margin: 0 auto;
+
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 0.625rem;
+
+    background-color: rgba(91, 91, 91, 0.36);
+    border-radius: 10px;
+    border: 1px solid #5B5B5B;
+    padding: 1rem;
+    gap: 1rem;
+
+}
+
+.reviewList::-webkit-scrollbar {
+    display: none;
 }
 
 .reviewItem {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    border-bottom: 1px solid var(--grey);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px;
+    padding: 1rem;
+}
+
+.reviewItem img {
+    width: 20%;
+    height: 15%;
+    border-radius: 4px;
 }
 
 .reviewContent {
     flex-grow: 1;
     text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-left: 1rem;
 }
 
 .reviewContent h3 {
-    margin: 0 0 10px 0;
-    color: #333;
+    color: var(--white);
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-family: var(--font-title);
+    font-weight: 600;
 }
 
 .ratingDisplay {
@@ -48,7 +79,7 @@
 }
 
 .deleteButton {
-    background-color: #ff4d4d;
+    background-color: transparent;
     color: white;
     border: none;
     border-radius: 5px;
@@ -56,10 +87,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     transition: background-color 0.3s;
-}
-
-.deleteButton:hover {
-    background-color: #ff3333;
 }

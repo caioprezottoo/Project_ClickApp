@@ -16,6 +16,7 @@ export const ReviewModal = ({ movie, onClose, onSubmit }) => {
           movieId: movie.id,
           rating: rating,
           movieTitle: movie.title,
+          movieCover: movie.cover,
           reviewedAt: new Date()
         });
 

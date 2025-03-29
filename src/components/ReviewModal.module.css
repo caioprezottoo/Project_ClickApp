@@ -62,7 +62,7 @@ h2 {
 }
 
 .submitButton {
-    background-color: var(--blue);
+    background: var(--blue);
     color: var(--white);
     border: none;
     padding: 1rem 1.9rem;
