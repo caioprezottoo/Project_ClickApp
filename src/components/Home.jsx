@@ -61,7 +61,7 @@ export const Home = () => {
     };
 
     const handleAddToFavorites = async () => {
-        if (addingToFavorites) return; // Prevent multiple clicks
+        if (addingToFavorites) return;
 
         try {
             setAddingToFavorites(true);
@@ -69,7 +69,6 @@ export const Home = () => {
             const currentMovie = movies[currentMovieIndex];
             const userId = auth.currentUser.uid;
 
-            // Check if movie is already in favorites
             const favoritesRef = collection(db, 'favorites');
             const q = query(
                 favoritesRef,
@@ -79,7 +78,6 @@ export const Home = () => {
 
             const querySnapshot = await getDocs(q);
 
-            // Only add if not already a favorite
             if (querySnapshot.empty) {
                 await addDoc(collection(db, 'favorites'), {
                     userId: userId,
@@ -89,10 +87,8 @@ export const Home = () => {
                     addedAt: new Date()
                 });
 
-                // Trigger animation
                 setShowFavoriteAnimation(true);
 
-                // Hide animation after it finishes
                 setTimeout(() => {
                     setShowFavoriteAnimation(false);
                 }, 1000);
@@ -159,13 +155,7 @@ export const Home = () => {
                     <EyeSlash size={32} /> Didn't Watch
                 </button>
             </div>
-            {showFavoriteAnimation && (
-                <div className={styles.floatingHearts}>
-                    <Heart size={20} weight="fill" className={`${styles.floatingHeart} ${styles.heart1}`} />
-                    <Heart size={16} weight="fill" className={`${styles.floatingHeart} ${styles.heart2}`} />
-                    <Heart size={24} weight="fill" className={`${styles.floatingHeart} ${styles.heart3}`} />
-                </div>
-            )}
+            {showFavoriteAnimation}
             <NavBar />
         </div>
     );

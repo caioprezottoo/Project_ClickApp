@@ -46,7 +46,7 @@ export const Reviewed = () => {
 
   if (isLoading) {
     return (
-      <div className={styles.movielistdiv}>
+      <div className={styles.background}>
         <Loading />
         <NavBar />
       </div>
@@ -72,15 +72,15 @@ export const Reviewed = () => {
                   {[...Array(review.rating)].map((_, index) => (
                     <Star
                       key={index}
-                      size={24}
+                      size={18}
                       weight="fill"
-                      color="#FFD700"
+                      color="var(--white)"
                     />
                   ))}
                   {[...Array(5 - review.rating)].map((_, index) => (
                     <Star
                       key={index}
-                      size={24}
+                      size={18}
                       weight="regular"
                       color="#E0E0E0"
                     />

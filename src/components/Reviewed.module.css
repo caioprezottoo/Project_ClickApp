@@ -1,3 +1,10 @@
+.background {
+    background: var(--black);
+    min-height: 100vh;
+    color: white;
+    padding-bottom: 5rem;
+}
+
 .movielistdiv {
     background: var(--black);
     min-height: 100vh;
@@ -23,13 +30,13 @@
     flex-direction: column;
     margin: 0 auto;
 
-    max-height: 70vh;
+    max-height: 67vh;
     overflow-y: auto;
     padding-right: 0.625rem;
 
     background-color: rgba(91, 91, 91, 0.36);
-    border-radius: 10px;
-    border: 1px solid #5B5B5B;
+    border-radius: 22px;
+    border: 1px solid var(--grey);
     padding: 1rem;
     gap: 1rem;
 

@@ -2,48 +2,55 @@
     background: var(--black);
     min-height: 100vh;
     color: white;
-    padding: 16px;
-    padding-bottom: 80px;
+    padding-bottom: 5rem;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 1.25rem;
 }
 
 .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 24px;
-    text-align: center;
+    color: var(--white);
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0 3rem 3rem 3rem;
+    margin-top: 3rem;
 }
 
 .favoritesGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .favoriteItem {
     position: relative;
     transition: transform 0.3s ease;
-}
-
-.favoriteItem:hover {
-    transform: scale(1.05);
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .movieCover {
     position: relative;
-    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 0;
+    padding-bottom: 150%;
 }
 
 .coverImage {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    aspect-ratio: 2/3;
+    height: 100%;
     object-fit: cover;
     display: block;
 }
@@ -52,8 +59,8 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #ff4d4d;
+    background-color: transparent;
+    color: var(--white);
     border: none;
     border-radius: 50%;
     width: 36px;
@@ -62,16 +69,8 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.favoriteItem:hover .removeButton {
     opacity: 1;
-}
-
-.removeButton:hover {
-    background-color: rgba(255, 77, 77, 0.2);
+    transition: opacity 0.2s ease;
 }
 
 .emptyState {

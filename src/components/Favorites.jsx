@@ -4,7 +4,7 @@ import { NavBar } from './NavBar';
 import { Loading } from './Loading';
 import { collection, getDocs, query, where, deleteDoc, doc } from 'firebase/firestore';
 import { db, auth } from '../config/firebase';
-import { Trash } from 'phosphor-react';
+import { X } from 'phosphor-react';
 
 export const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -39,7 +39,6 @@ export const Favorites = () => {
     try {
       await deleteDoc(doc(db, 'favorites', favoriteId));
 
-      // Update state to remove the deleted favorite
       setFavorites(favorites.filter(favorite => favorite.id !== favoriteId));
     } catch (error) {
       console.error('Error removing from favorites:', error);
@@ -78,7 +77,7 @@ export const Favorites = () => {
                     className={styles.removeButton}
                     onClick={() => handleRemoveFavorite(favorite.id)}
                   >
-                    <Trash size={20} />
+                    <X size={20} />
                   </button>
                 </div>
               </div>
