@@ -1,0 +1,85 @@
+.background {
+    background: var(--black);
+    min-height: 100vh;
+    color: white;
+    padding: 16px;
+    padding-bottom: 80px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.favoritesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.favoriteItem {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.favoriteItem:hover {
+    transform: scale(1.05);
+}
+
+.movieCover {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.coverImage {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+}
+
+.removeButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ff4d4d;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.favoriteItem:hover .removeButton {
+    opacity: 1;
+}
+
+.removeButton:hover {
+    background-color: rgba(255, 77, 77, 0.2);
+}
+
+.emptyState {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 18px;
+    color: #999;
+    text-align: center;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Home.module.css';
-import { Eye, EyeSlash, Plus } from 'phosphor-react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { Eye, EyeSlash, Plus, Heart } from 'phosphor-react';
+import { collection, getDocs, query, where, addDoc } from 'firebase/firestore';
 import { db, auth } from '../config/firebase';
 import { Movie } from './Movie';
 import { NavBar } from './NavBar';
@@ -13,6 +13,8 @@ export const Home = () => {
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
     const [showReviewModal, setShowReviewModal] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [addingToFavorites, setAddingToFavorites] = useState(false);
+    const [showFavoriteAnimation, setShowFavoriteAnimation] = useState(false);
 
     useEffect(() => {
         const fetchUnreviewedMovies = async () => {
@@ -58,6 +60,53 @@ export const Home = () => {
         setCurrentMovieIndex(0);
     };
 
+    const handleAddToFavorites = async () => {
+        if (addingToFavorites) return; // Prevent multiple clicks
+
+        try {
+            setAddingToFavorites(true);
+
+            const currentMovie = movies[currentMovieIndex];
+            const userId = auth.currentUser.uid;
+
+            // Check if movie is already in favorites
+            const favoritesRef = collection(db, 'favorites');
+            const q = query(
+                favoritesRef,
+                where('userId', '==', userId),
+                where('movieId', '==', currentMovie.id)
+            );
+
+            const querySnapshot = await getDocs(q);
+
+            // Only add if not already a favorite
+            if (querySnapshot.empty) {
+                await addDoc(collection(db, 'favorites'), {
+                    userId: userId,
+                    movieId: currentMovie.id,
+                    movieCover: currentMovie.poster || currentMovie.image || currentMovie.cover || '',
+                    isFavoriteOrNo: true,
+                    addedAt: new Date()
+                });
+
+                // Trigger animation
+                setShowFavoriteAnimation(true);
+
+                // Hide animation after it finishes
+                setTimeout(() => {
+                    setShowFavoriteAnimation(false);
+                }, 1000);
+            } else {
+                alert('This movie is already in your favorites!');
+            }
+        } catch (error) {
+            console.error('Error adding to favorites:', error);
+            alert('Failed to add to favorites. Please try again.');
+        } finally {
+            setAddingToFavorites(false);
+        }
+    };
+
     if (isLoading) {
         return <div><Loading /></div>;
     }
@@ -93,8 +142,15 @@ export const Home = () => {
                 >
                     <Eye size={32} /> Watched
                 </button>
-                <button className={styles.addButton}>
-                    <Plus size={24} weight="bold" />
+                <button
+                    className={`${styles.addButton} ${showFavoriteAnimation ? styles.addButtonActive : ''}`}
+                    onClick={handleAddToFavorites}
+                    disabled={addingToFavorites}
+                >
+                    {showFavoriteAnimation ?
+                        <Heart size={24} weight="fill" className={styles.favoriteIcon} /> :
+                        <Plus size={24} weight="bold" />
+                    }
                 </button>
                 <button
                     className={styles.didntwatchButton}
@@ -103,6 +159,13 @@ export const Home = () => {
                     <EyeSlash size={32} /> Didn't Watch
                 </button>
             </div>
+            {showFavoriteAnimation && (
+                <div className={styles.floatingHearts}>
+                    <Heart size={20} weight="fill" className={`${styles.floatingHeart} ${styles.heart1}`} />
+                    <Heart size={16} weight="fill" className={`${styles.floatingHeart} ${styles.heart2}`} />
+                    <Heart size={24} weight="fill" className={`${styles.floatingHeart} ${styles.heart3}`} />
+                </div>
+            )}
             <NavBar />
         </div>
     );

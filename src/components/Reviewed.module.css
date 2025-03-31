@@ -3,6 +3,7 @@
     min-height: 100vh;
     padding: 3rem 1.25rem;
     text-align: center;
+
 }
 
 .movielistdiv h1 {
@@ -88,4 +89,5 @@
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s;
+    cursor: pointer;
 }
