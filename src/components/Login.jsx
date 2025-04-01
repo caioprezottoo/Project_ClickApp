@@ -4,7 +4,7 @@ import styles from './Login.module.css';
 import { Loading } from './Loading';
 import { ArrowLeft } from 'phosphor-react';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
@@ -12,36 +12,36 @@ import { SignInWithGoogle } from './SignInWithGoogle';
 import { toast } from 'react-toastify';
 
 export const Login = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            await signInWithEmailAndPassword(auth, email, password)
+            await signInWithEmailAndPassword(auth, email, password);
             const user = auth.currentUser;
             if (user.emailVerified) {
                 toast.success("User log in successful", {
                     position: "top-center",
-                })
-                window.location.href = "/Home"
+                });
+                navigate("/Home");
             } else {
                 toast.error("Email not verified. Please verify your email.", {
                     position: "top-center",
-                })
+                });
             }
         } catch (error) {
             console.error(error.message);
             toast.error(error.message, {
                 position: "top-center",
-            })
+            });
         }
     }
 
     return (
         <div className={styles.background}>
-
             <title>Login - Click</title>
             <Loading />
 
@@ -71,7 +71,6 @@ export const Login = () => {
             >Submit</button>
 
             <SignInWithGoogle />
-
         </div>
-    )
+    );
 }
