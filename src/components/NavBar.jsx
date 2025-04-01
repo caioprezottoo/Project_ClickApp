@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './NavBar.module.css';
 
-import { FilmSlate, ListHeart, User, Star } from '@phosphor-icons/react/dist/ssr';
+import { FilmSlate, ListHeart, User, Star, Plus } from '@phosphor-icons/react/dist/ssr';
 import { Link, useLocation } from 'react-router-dom';
 
 export const NavBar = () => {
@@ -26,6 +26,15 @@ export const NavBar = () => {
                             className={`${styles.icoNavBar} ${activeRoute === '/Reviewed' ? styles.selected : ''}`}
                         >
                             <Star size={24} />
+                        </Link>
+
+                    </li>
+                    <li>
+                        <Link
+                            to="/AddMovie"
+                            className={`${styles.icoNavBar} ${activeRoute === '/AddMovie' ? styles.selected : ''}`}
+                        >
+                            <Plus size={24} />
                         </Link>
 
                     </li>

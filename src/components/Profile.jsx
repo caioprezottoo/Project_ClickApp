@@ -25,7 +25,6 @@ export const Profile = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [newEmail, setNewEmail] = useState('');
-    const [currentPassword, setCurrentPassword] = useState('');
     const [message, setMessage] = useState({ text: '', type: '' });
     const [showConfirmDelete, setShowConfirmDelete] = useState(false);
     const [isEmailEditing, setIsEmailEditing] = useState(false);
@@ -70,7 +69,6 @@ export const Profile = () => {
 
     const checkEmailExists = async (email) => {
         try {
-            // Check if email exists in users collection
             const usersRef = collection(db, 'users');
             const q = query(usersRef, where('email', '==', email));
             const querySnapshot = await getDocs(q);
@@ -93,7 +91,6 @@ export const Profile = () => {
         try {
             setLoading(true);
 
-            // Check if email already exists
             const emailExists = await checkEmailExists(newEmail);
 
             if (emailExists) {
@@ -102,18 +99,10 @@ export const Profile = () => {
                 return;
             }
 
-            // Reauthenticate user before updating email
-            const credential = EmailAuthProvider.credential(
-                user.email,
-                currentPassword
-            );
-
-            await reauthenticateWithCredential(auth.currentUser, credential);
-
-            // Update email in authentication
+            // Update Firebase Auth email
             await updateEmail(auth.currentUser, newEmail);
 
-            // Update email in Firestore
+            // Update Firestore document
             const userRef = doc(db, 'users', user.uid);
             await updateDoc(userRef, {
                 email: newEmail
@@ -126,19 +115,14 @@ export const Profile = () => {
             }));
 
             setNewEmail('');
-            setCurrentPassword('');
             setIsEmailEditing(false);
-            setMessage({ text: 'Email updated successfully!', type: 'success' });
+            setMessage({
+                text: 'Please verify your new email address. Check your inbox for a verification link.',
+                type: 'success'
+            });
         } catch (error) {
             console.error('Error updating email:', error);
-
-            if (error.code === 'auth/wrong-password') {
-                setMessage({ text: 'Incorrect password. Please try again.', type: 'error' });
-            } else if (error.code === 'auth/requires-recent-login') {
-                setMessage({ text: 'Please log out and log back in before changing your email.', type: 'error' });
-            } else {
-                setMessage({ text: 'Failed to update email. Please try again.', type: 'error' });
-            }
+            setMessage({ text: `Failed to update email: ${error.message}`, type: 'error' });
         } finally {
             setLoading(false);
         }
@@ -150,11 +134,8 @@ export const Profile = () => {
             const currentUser = auth.currentUser;
 
             if (currentUser) {
-                // Delete user data from Firestore
-                // 1. Delete user document
                 await deleteDoc(doc(db, 'users', currentUser.uid));
 
-                // 2. Delete user's reviews
                 const reviewsRef = collection(db, 'reviews');
                 const reviewsQuery = query(reviewsRef, where('userId', '==', currentUser.uid));
                 const reviewsSnapshot = await getDocs(reviewsQuery);
@@ -164,7 +145,6 @@ export const Profile = () => {
                 );
                 await Promise.all(deleteReviewPromises);
 
-                // 3. Delete user's favorites
                 const favoritesRef = collection(db, 'favorites');
                 const favoritesQuery = query(favoritesRef, where('userId', '==', currentUser.uid));
                 const favoritesSnapshot = await getDocs(favoritesQuery);
@@ -174,10 +154,8 @@ export const Profile = () => {
                 );
                 await Promise.all(deleteFavoritePromises);
 
-                // 4. Finally delete the user authentication account
                 await deleteUser(currentUser);
 
-                // Redirect to home page
                 window.location.href = "/";
             }
         } catch (error) {
@@ -189,7 +167,7 @@ export const Profile = () => {
 
     if (loading) {
         return (
-            <div className={styles.background}>
+            <div className={styles.loading}>
                 <Loading />
             </div>
         );
@@ -225,14 +203,6 @@ export const Profile = () => {
                                             required
                                             className={styles.input}
                                         />
-                                        <input
-                                            type="password"
-                                            value={currentPassword}
-                                            onChange={(e) => setCurrentPassword(e.target.value)}
-                                            placeholder="Current password"
-                                            required
-                                            className={styles.input}
-                                        />
                                         <div className={styles.buttonGroup}>
                                             <button type="submit" className={styles.saveButton}>
                                                 Save
@@ -242,7 +212,6 @@ export const Profile = () => {
                                                 onClick={() => {
                                                     setIsEmailEditing(false);
                                                     setNewEmail('');
-                                                    setCurrentPassword('');
                                                 }}
                                                 className={styles.cancelButton}
                                             >

@@ -55,6 +55,8 @@ export const Reviewed = () => {
 
   return (
     <div className={styles.movielistdiv}>
+      <title>Reviewed - Click</title>
+
       <h1>Already Watched & Reviewed</h1>
       {reviews.length === 0 ? (
         <p className={styles.noReviews}>No movies reviewed yet</p>

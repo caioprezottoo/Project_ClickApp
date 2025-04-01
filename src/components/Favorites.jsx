@@ -57,6 +57,7 @@ export const Favorites = () => {
   return (
     <div className={styles.background}>
       <div className={styles.container}>
+        <title>Favorites - Click</title>
         <h1 className={styles.title}>My Favorites</h1>
 
         {favorites.length === 0 ? (

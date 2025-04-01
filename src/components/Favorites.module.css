@@ -1,7 +1,7 @@
 .background {
     background: var(--black);
     min-height: 100vh;
-    color: white;
+    color: var(--white);
     padding-bottom: 5rem;
 }
 
@@ -79,6 +79,6 @@
     align-items: center;
     height: 200px;
     font-size: 18px;
-    color: #999;
+    color: var(--grey);
     text-align: center;
 }
