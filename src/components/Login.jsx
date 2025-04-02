@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
-
 import { Loading } from './Loading';
 import { ArrowLeft } from 'phosphor-react';
-
 import { Link, useNavigate } from 'react-router-dom';
-
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import { SignInWithGoogle } from './SignInWithGoogle';
@@ -26,7 +23,7 @@ export const Login = () => {
                 toast.success("User log in successful", {
                     position: "top-center",
                 });
-                navigate("/Home");
+                navigate('/Home');
             } else {
                 toast.error("Email not verified. Please verify your email.", {
                     position: "top-center",
@@ -49,7 +46,7 @@ export const Login = () => {
                 <button className={styles.backButton}><ArrowLeft size={29} /></button>
             </Link>
 
-            <h1 className={styles.firstTitle}>Welcome Back!</h1>
+            <h1 className={styles.firstTitle}>What's up, Welcome Back!</h1>
             <p>Log in to enjoy the ultimate reviewing app in the whole world wide web!</p>
 
             <input

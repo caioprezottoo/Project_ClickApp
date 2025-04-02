@@ -60,7 +60,7 @@ export function LoginRegistration() {
                     <button className={styles.backButton}><ArrowLeft size={29} /></button>
                 </Link>
 
-                <h1 className={styles.firstTitle}>Go ahead and set up your account</h1>
+                <h1 className={styles.firstTitle}>Let's go ahead and set up your account</h1>
                 <p>Sign in to enjoy the ultimate reviewing app in the whole world wide web!</p>
 
                 <input
