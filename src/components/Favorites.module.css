@@ -2,36 +2,45 @@
     background: var(--black);
     min-height: 100vh;
     color: var(--white);
-    padding-bottom: 5rem;
+    padding-bottom: calc(var(--navbar-height) + 1rem);
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1.25rem;
+    padding: var(--page-padding);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .title {
     color: var(--white);
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
     font-style: normal;
     font-weight: 700;
-    margin: 0 3rem 3rem 3rem;
-    margin-top: 3rem;
+    margin: clamp(1.5rem, 4vh, 3rem) 0;
+    text-align: center;
 }
 
 .favoritesGrid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: clamp(0.5rem, 2vw, 1rem);
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 1rem;
 }
 
 .favoriteItem {
     position: relative;
     transition: transform 0.3s ease;
-    max-width: 400px;
+    max-width: 100%;
     margin: 0 auto;
     width: 100%;
 }
@@ -43,6 +52,7 @@
     width: 100%;
     height: 0;
     padding-bottom: 150%;
+    border-radius: 8px;
 }
 
 .coverImage {
@@ -59,12 +69,12 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
     color: var(--white);
     border: none;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: clamp(24px, 6vw, 36px);
+    height: clamp(24px, 6vw, 36px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,8 +87,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    font-size: 18px;
+    height: clamp(150px, 30vh, 200px);
+    font-size: clamp(1rem, 3vw, 1.2rem);
     color: var(--grey);
     text-align: center;
+    flex: 1;
+}
+
+@media (min-width: 768px) {
+    .favoritesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .favoritesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .favoritesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .favoritesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 320px) {
+    .title {
+        margin: 1rem 0;
+    }
+
+    .favoriteItem {
+        max-width: 120px;
+    }
 }

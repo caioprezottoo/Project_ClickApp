@@ -1,93 +1,91 @@
 .background {
     background: var(--black);
+    min-height: 100vh;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: var(--page-padding);
+    padding-bottom: calc(var(--navbar-height) + 1rem);
+    overflow: hidden;
 }
 
 .homeH1 {
     color: var(--white);
     font-family: var(--font-title);
-    font-size: 2.4rem;
+    font-size: clamp(1.5rem, 5vw, 2.4rem);
     font-weight: 700;
     line-height: normal;
     text-align: center;
-
     cursor: default;
+    margin-top: 1rem;
+}
+
+.movieContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    max-height: 70vh;
+    overflow: visible;
 }
 
 .buttonsDiv {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 7rem;
-    gap: 1rem;
+    justify-content: center;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 0.5rem;
+}
+
+.watchedButton,
+.didntwatchButton {
+    min-width: 7rem;
+    max-width: 9rem;
+    width: 30vw;
+    height: clamp(2.8rem, 10vh, 3.7rem);
+    border-radius: 1.375rem;
+    color: var(--white);
+    font-family: var(--font-content);
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    font-weight: 300;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
 }
 
 .watchedButton {
-    width: 9rem;
-    height: 3.7rem;
-    border-radius: 1.375rem;
     background: var(--gradient);
-    padding-right: 1.3rem;
-    padding-left: 1.3rem;
+    padding: 0 1.3rem;
 
-    color: var(--white);
-    font-family: var(--font-content);
-    font-size: 0.9rem;
-    font-weight: 300;
-    line-height: normal;
-    border: none;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
 }
 
 .didntwatchButton {
-    width: 9rem;
-    height: 3.7rem;
-    border-radius: 1.375rem;
     background: var(--red);
-    padding-right: 1rem;
-    padding-left: 1rem;
-
-    color: var(--white);
-    font-family: var(--font-content);
-    font-size: 0.9rem;
-    font-weight: 300;
-    line-height: normal;
-    border: none;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
-
+    padding: 0 1rem;
 }
 
 .addButton {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 1.375rem;
+    width: clamp(2rem, 7vw, 2.5rem);
+    height: clamp(2rem, 7vw, 2.5rem);
+    border-radius: 50%;
     background: transparent;
     border: 2px solid var(--white);
-
     color: var(--white);
-    font-family: var(--font-content);
-    font-size: 0.9rem;
     font-weight: 300;
-    line-height: normal;
     cursor: pointer;
 }
 
@@ -114,5 +112,28 @@
 
     100% {
         transform: scale(1);
+    }
+}
+
+@media (max-height: 600px) {
+    .buttonsDiv {
+        margin-bottom: 1rem;
+    }
+
+    .watchedButton,
+    .didntwatchButton {
+        height: 2.8rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .buttonsDiv {
+        gap: 0.3rem;
+    }
+
+    .watchedButton,
+    .didntwatchButton {
+        min-width: 6rem;
+        padding: 0 0.5rem;
     }
 }

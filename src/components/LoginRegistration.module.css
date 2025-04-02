@@ -2,38 +2,50 @@
     background-image: url("../assets/loginbackground2.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 var(--page-padding);
+    position: relative;
+    overflow-x: hidden;
 }
 
 .backButton {
-    width: 4rem;
-    height: 3.8rem;
+    position: absolute;
+    top: clamp(1rem, 5vh, 3rem);
+    left: clamp(1rem, 5vw, 2rem);
+    width: clamp(3rem, 10vw, 4rem);
+    height: clamp(3rem, 10vw, 3.8rem);
     border-radius: 1.375rem;
     color: var(--white);
     border: none;
-    margin-top: 3rem;
-    margin-left: 2rem;
     padding-top: 0.4rem;
     border: 1px solid var(--grey);
     background-color: rgba(20, 21, 20, 0.9);
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backButton svg {
+    width: clamp(18px, 5vw, 29px);
+    height: clamp(18px, 5vw, 29px);
 }
 
 .firstTitle {
-    font-size: 2.5rem;
-    margin-left: 2rem;
-    margin-right: 1rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin: 0 clamp(1rem, 3vw, 2rem);
     margin-bottom: 1rem;
-    margin-top: 11rem;
+    margin-top: clamp(7rem, 20vh, 11rem);
+    text-align: center;
 }
-
 
 h1 {
     color: var(--white);
     font-family: var(--font-title);
-    font-size: 2.2rem;
     font-weight: 700;
     line-height: normal;
     text-align: center;
@@ -42,36 +54,35 @@ h1 {
 p {
     color: var(--white);
     font-family: var(--font-content);
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     font-weight: 300;
     line-height: normal;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    margin-bottom: 2rem;
+    margin: 0 clamp(1.5rem, 5vw, 4rem);
+    margin-bottom: clamp(1.5rem, 4vh, 2rem);
     text-align: center;
-
 }
 
 .placeholder {
-    width: 23rem;
-    height: 3rem;
+    width: clamp(16rem, 80vw, 23rem);
+    height: clamp(2.5rem, 7vh, 3rem);
     border-radius: 1rem;
     background: var(--white);
-    margin-bottom: 0.85rem;
+    margin-bottom: clamp(0.5rem, 2vh, 0.85rem);
 
     color: var(--grey);
     font-family: var(--font-content);
-    font-size: 1.0625rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.0625rem);
     font-weight: 300;
     line-height: normal;
     padding-left: 1rem;
     border: 1px solid #707070;
+    max-width: 90%;
 }
 
 .submitButton {
-    width: 15rem;
-    height: 3rem;
-    margin-top: 1rem;
+    width: clamp(10rem, 50vw, 15rem);
+    height: clamp(2.5rem, 7vh, 3rem);
+    margin-top: clamp(0.75rem, 2vh, 1rem);
     border-radius: 1rem;
     background: var(--gradient);
     cursor: pointer;
@@ -79,10 +90,55 @@ p {
     color: var(--white);
     text-align: center;
     font-family: var(--font-random);
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     font-weight: 400;
     line-height: normal;
     transition: 0.2s ease-in-out;
     border: none;
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1rem, 3vh, 2rem);
+}
+
+@media (max-height: 700px) {
+    .firstTitle {
+        margin-top: 5rem;
+        font-size: 1.8rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    .placeholder {
+        margin-bottom: 0.5rem;
+    }
+
+    .submitButton {
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-height: 600px) {
+    .firstTitle {
+        margin-top: 4rem;
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .placeholder,
+    .submitButton {
+        width: 90vw;
+    }
+
+    .backButton {
+        top: 0.5rem;
+        left: 0.5rem;
+    }
 }

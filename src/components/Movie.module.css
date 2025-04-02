@@ -2,15 +2,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 22rem;
+    width: 100%;
+    max-width: 22rem;
     margin-bottom: 1rem;
 }
 
-img {
-    width: 22rem;
-    height: 33rem;
+.movieImage {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/3;
+    max-height: 50vh;
     border-radius: 22px;
-    margin-bottom: 0; 
+    margin-bottom: 0;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8));
     object-fit: cover;
 }
@@ -23,10 +26,33 @@ h2 {
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8));
     max-width: 100%;
     overflow-wrap: break-word;
-    line-height: 1.4; 
-    height: 2.8rem; 
+    line-height: 1.4;
+    min-height: 2.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+}
+
+@media (max-height: 700px) {
+    .movieImage {
+        max-height: 40vh;
+    }
+
+    h2 {
+        font-size: 1rem;
+        min-height: 2.2rem;
+    }
+}
+
+@media (max-height: 500px) {
+    .movieImage {
+        max-height: 35vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .movieDiv {
+        width: 100%;
+    }
 }

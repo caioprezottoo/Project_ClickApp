@@ -1,51 +1,57 @@
 .loading {
     background: var(--black);
     min-height: 100vh;
-    color: white;
+    color: var(--white);
     padding-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .background {
     background: var(--black);
     min-height: 100vh;
     color: var(--white);
-    padding: 1rem;
-    padding-bottom: 5rem;
-
+    padding: var(--page-padding);
+    padding-bottom: calc(var(--navbar-height) + 1rem);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .profileContainer {
     max-width: 600px;
-    margin: 0 auto;
-    padding: 1.25rem;
+    width: 100%;
+    padding: clamp(0.75rem, 2vw, 1.25rem);
+    margin-top: clamp(0.5rem, 3vh, 2rem);
+    overflow-y: auto;
+    height: calc(100vh - var(--navbar-height) - 4rem);
 }
 
 .profileTitle {
     color: var(--white);
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
     font-style: normal;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1rem, 3vh, 2rem);
 }
 
 .profileCard {
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: clamp(1rem, 3vh, 2rem);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .profileSection {
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1rem, 3vh, 2rem);
 }
 
 .profileSection h2 {
-    font-size: 1.4rem;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -66,6 +72,7 @@
     color: var(--white);
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
 }
 
 .editButton {
@@ -73,7 +80,7 @@
     color: var(--blue);
     border: none;
     padding: 0.25rem 0.5rem;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
     cursor: pointer;
     margin-left: 1rem;
 }
@@ -85,12 +92,13 @@
 
 .input {
     width: 100%;
-    padding: 0.75rem;
+    padding: clamp(0.5rem, 2vh, 0.75rem);
     margin-bottom: 0.75rem;
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--white);
     border-radius: 4px;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
 }
 
 .input:focus {
@@ -101,88 +109,94 @@
 .buttonGroup {
     display: flex;
     gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 .saveButton {
     background-color: var(--blue);
     color: var(--white);
     border: none;
-    padding: 0.75rem 1rem;
+    padding: clamp(0.5rem, 2vh, 0.75rem) 1rem;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    flex: 1;
+    min-width: 80px;
 }
 
 .cancelButton {
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--white);
     border: none;
-    padding: 0.75rem 1rem;
+    padding: clamp(0.5rem, 2vh, 0.75rem) 1rem;
     border-radius: 4px;
     cursor: pointer;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    flex: 1;
+    min-width: 80px;
 }
 
 .actionButtons {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: clamp(0.75rem, 2vh, 1rem);
+}
+
+.logoutButton,
+.deleteButton {
+    color: var(--white);
+    border: none;
+    padding: clamp(0.6rem, 2vh, 0.75rem) 1rem;
+    border-radius: 16px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-family: var(--font-random);
 }
 
 .logoutButton {
     background: var(--gradient);
-    color: var(--white);
-    border: none;
-    padding: 0.75rem 1rem;
-    border-radius: 16px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-    font-size: 1.3rem;
-    font-family: var(--font-random);
-    font-weight: 500;
 }
 
 .deleteButton {
     background: var(--red);
-    color: var(--white);
-    border: none;
-    padding: 0.75rem 1rem;
-    border-radius: 16px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1.3rem;
-    font-family: var(--font-random);
-    font-weight: 500;
 }
 
 .confirmDelete {
-    padding: 1rem;
+    padding: clamp(0.75rem, 2vh, 1rem);
     background-color: rgba(231, 76, 60, 0.2);
     border-radius: 4px;
     margin-top: 0.5rem;
 }
 
 .confirmDelete p {
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0.75rem, 2vh, 1rem);
     text-align: center;
     color: var(--red);
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
 }
 
 .confirmDeleteButton {
     background-color: var(--red);
     color: var(--white);
     border: none;
-    padding: 0.75rem 1rem;
+    padding: clamp(0.5rem, 2vh, 0.75rem) 1rem;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    flex: 1;
+    min-width: 100px;
 }
 
 .message {
-    padding: 1rem;
-    margin-bottom: 1.5rem;
+    padding: clamp(0.75rem, 2vh, 1rem);
+    margin-bottom: clamp(1rem, 3vh, 1.5rem);
     border-radius: 4px;
     text-align: center;
+    font-size: clamp(0.875rem, 2.5vw, 0.9rem);
 }
 
 .success {
@@ -195,12 +209,34 @@
     color: var(--red);
 }
 
-@media (max-width: 600px) {
+@media (max-height: 600px) {
     .profileContainer {
-        padding: 0.5rem;
+        margin-top: 0.5rem;
     }
 
-    .profileCard {
-        padding: 1rem;
+    .profileTitle {
+        margin-bottom: 0.75rem;
+    }
+
+    .profileSection {
+        margin-bottom: 0.75rem;
+    }
+
+    .actionButtons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .logoutButton,
+    .deleteButton {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 340px) {
+    .buttonGroup {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 }

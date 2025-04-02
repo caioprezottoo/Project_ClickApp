@@ -1,7 +1,12 @@
 .background {
     background-image: url("../assets/loginbackground.png");
     background-repeat: no-repeat;
-    background-size: cover;  
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 .group {
@@ -11,23 +16,26 @@
     justify-content: center;
     height: 100vh;
     animation: zoom 2s;
+    padding: 0 var(--page-padding);
 }
 
 @keyframes zoom {
     from {
-        transform: scale(0.8); 
-        opacity: 0.3; 
-      }
-      to {
-        transform: scale(1); 
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+
+    to {
+        transform: scale(1);
         opacity: 1;
-      }
+    }
 }
 
 .logo {
     height: auto;
-    width: 12rem;
-    margin-top: 29.75rem;
+    width: clamp(8rem, 30vw, 12rem);
+    margin-top: clamp(10rem, 40vh, 29.75rem);
+    max-width: 90%;
 }
 
 .paragraph {
@@ -35,48 +43,87 @@
     justify-content: center;
     text-align: center;
     font-family: var(--font-content);
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     font-weight: 300;
     line-height: normal;
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin: 1rem clamp(1rem, 5vw, 5rem);
     flex-wrap: wrap;
     cursor: default;
+    max-width: 90%;
 }
 
-.getStarted {
-    margin-top: 0.5rem;
-    margin-bottom: 1.4rem;
-    width: 20rem;
-    height: 3rem;
-    border-radius: 16px;
-    background: var(--gradient);
-    color: var(--white);
+.getStarted,
+.logIn {
+    width: clamp(15rem, 70vw, 20rem);
     text-align: center;
     font-family: var(--font-random);
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     cursor: pointer;
     transition: 0.2s ease-in-out;
-    border: none;
+    max-width: 100%;
+    border-radius: 16px;
+}
 
+.getStarted {
+    margin-top: 0.5rem;
+    margin-bottom: clamp(0.8rem, 2vh, 1.4rem);
+    height: clamp(2.5rem, 7vh, 3rem);
+    background: var(--gradient);
+    color: var(--white);
+    border: none;
 }
 
 .logIn {
-    margin-bottom: 7.438rem;
-    border-radius: 16px;
+    margin-bottom: clamp(3rem, 15vh, 7.438rem);
     background: transparent;
     color: var(--white);
-    width: 20rem;
-    height: 2.8rem;
-    text-align: center;
-    font-family: var(--font-random);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: normal;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
+    height: clamp(2.3rem, 6vh, 2.8rem);
     border: 1px solid var(--blue);
+}
+
+@media (max-height: 650px) {
+    .logo {
+        margin-top: 5rem;
+    }
+
+    .getStarted,
+    .logIn {
+        margin-bottom: 0.8rem;
+    }
+
+    .logIn {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (max-height: 500px) {
+    .logo {
+        margin-top: 2rem;
+        width: 6rem;
+    }
+
+    .paragraph {
+        margin: 0.5rem 1rem;
+    }
+
+    .getStarted,
+    .logIn {
+        height: 2.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .logIn {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .getStarted,
+    .logIn {
+        width: 90vw;
+    }
 }

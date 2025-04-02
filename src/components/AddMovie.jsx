@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db, auth } from '../config/firebase';
 import { NavBar } from './NavBar';
@@ -9,6 +9,8 @@ export const AddMovie = () => {
     const [cover, setCover] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState({ text: '', isError: false });
+    const [showWarning, setShowWarning] = useState(false);
+    const [hasSeenWarning, setHasSeenWarning] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -48,6 +50,34 @@ export const AddMovie = () => {
         setCover(e.target.value);
     };
 
+    const showWarningPopup = () => {
+        // Only show the warning if the user hasn't seen it before
+        if (!hasSeenWarning) {
+            setShowWarning(true);
+        }
+    };
+
+    const closeWarningPopup = () => {
+        setShowWarning(false);
+        // Mark that the user has seen the warning
+        setHasSeenWarning(true);
+    };
+
+    // Check local storage for previous warning acknowledgment
+    useEffect(() => {
+        const hasAcknowledgedWarning = localStorage.getItem('movieWarningAcknowledged');
+        if (hasAcknowledgedWarning === 'true') {
+            setHasSeenWarning(true);
+        }
+    }, []);
+
+    // Save acknowledgment to local storage when user acknowledges
+    useEffect(() => {
+        if (hasSeenWarning) {
+            localStorage.setItem('movieWarningAcknowledged', 'true');
+        }
+    }, [hasSeenWarning]);
+
     return (
         <div className={styles.container}>
             <title>Add Movie - Click</title>
@@ -62,6 +92,7 @@ export const AddMovie = () => {
                             id="title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
+                            onFocus={showWarningPopup}
                             placeholder="Enter movie title"
                             className={styles.input}
                             disabled={isSubmitting}
@@ -112,6 +143,23 @@ export const AddMovie = () => {
                     </button>
                 </form>
             </div>
+
+            {showWarning && (
+                <div className={styles.warningOverlay} onClick={closeWarningPopup}>
+                    <div className={styles.warningPopup} onClick={(e) => e.stopPropagation()}>
+                        <h3 className={styles.warningTitle}>⚠️ Important Warning</h3>
+                        <p className={styles.warningText}>
+                            You must add a real movie to our database. All submissions will be reviewed.
+                        </p>
+                        <p className={styles.warningText}>
+                            Adding fake or inappropriate content may result in your account being banned.
+                        </p>
+                        <button className={styles.warningButton} onClick={closeWarningPopup}>
+                            I Understand
+                        </button>
+                    </div>
+                </div>
+            )}
 
             <NavBar />
         </div>
