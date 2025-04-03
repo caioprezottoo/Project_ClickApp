@@ -7,7 +7,8 @@ import {
     updateEmail,
     deleteUser,
     EmailAuthProvider,
-    reauthenticateWithCredential
+    reauthenticateWithCredential,
+    GoogleAuthProvider
 } from 'firebase/auth';
 import {
     doc,
@@ -25,9 +26,12 @@ export const Profile = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [newEmail, setNewEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [message, setMessage] = useState({ text: '', type: '' });
     const [showConfirmDelete, setShowConfirmDelete] = useState(false);
     const [isEmailEditing, setIsEmailEditing] = useState(false);
+    const [isReauthenticating, setIsReauthenticating] = useState(false);
+    const [isGoogleUser, setIsGoogleUser] = useState(false);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -35,6 +39,13 @@ export const Profile = () => {
                 const currentUser = auth.currentUser;
 
                 if (currentUser) {
+                    // Check if the user is signed in with Google
+                    const isGoogle = currentUser.providerData.some(
+                        provider => provider.providerId === 'google.com'
+                    );
+
+                    setIsGoogleUser(isGoogle);
+
                     const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
 
                     if (userDoc.exists()) {
@@ -80,17 +91,33 @@ export const Profile = () => {
         }
     };
 
-    const handleEmailUpdate = async (e) => {
+    const handleReauthenticate = async (e) => {
         e.preventDefault();
-
-        if (newEmail === user.email) {
-            setMessage({ text: 'New email is the same as current email.', type: 'error' });
-            return;
-        }
 
         try {
             setLoading(true);
 
+            // Create credential with current email and password
+            const credential = EmailAuthProvider.credential(
+                auth.currentUser.email,
+                password
+            );
+
+            // Reauthenticate
+            await reauthenticateWithCredential(auth.currentUser, credential);
+
+            // Proceed with email update
+            await updateEmailAfterReauth();
+
+        } catch (error) {
+            console.error('Error reauthenticating:', error);
+            setMessage({ text: 'Incorrect password. Please try again.', type: 'error' });
+            setLoading(false);
+        }
+    };
+
+    const updateEmailAfterReauth = async () => {
+        try {
             const emailExists = await checkEmailExists(newEmail);
 
             if (emailExists) {
@@ -115,9 +142,11 @@ export const Profile = () => {
             }));
 
             setNewEmail('');
+            setPassword('');
             setIsEmailEditing(false);
+            setIsReauthenticating(false);
             setMessage({
-                text: 'Please verify your new email address. Check your inbox for a verification link.',
+                text: 'Email updated successfully. Please verify your new email address.',
                 type: 'success'
             });
         } catch (error) {
@@ -126,6 +155,27 @@ export const Profile = () => {
         } finally {
             setLoading(false);
         }
+    };
+
+    const handleEmailUpdate = async (e) => {
+        e.preventDefault();
+
+        if (newEmail === user.email) {
+            setMessage({ text: 'New email is the same as current email.', type: 'error' });
+            return;
+        }
+
+        if (isGoogleUser) {
+            setMessage({
+                text: 'Google accounts cannot change their email through this app. Please update your email in your Google account settings.',
+                type: 'error'
+            });
+            setIsEmailEditing(false);
+            return;
+        }
+
+        // Show reauthentication form instead of directly updating
+        setIsReauthenticating(true);
     };
 
     const handleDeleteAccount = async () => {
@@ -165,6 +215,13 @@ export const Profile = () => {
         }
     };
 
+    const cancelEmailEdit = () => {
+        setIsEmailEditing(false);
+        setIsReauthenticating(false);
+        setNewEmail('');
+        setPassword('');
+    };
+
     if (loading) {
         return (
             <div className={styles.loading}>
@@ -191,9 +248,35 @@ export const Profile = () => {
                         <h2>Account Information</h2>
 
                         <div className={styles.profileInfo}>
-                            <p>
+                            <div className={styles.profileField}>
                                 <span className={styles.label}>Email:</span>
-                                {isEmailEditing ? (
+                                {isEmailEditing && isReauthenticating ? (
+                                    <form onSubmit={handleReauthenticate} className={styles.editForm}>
+                                        <p className={styles.reauthMessage}>
+                                            Please enter your current password to confirm this change
+                                        </p>
+                                        <input
+                                            type="password"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            placeholder="Your current password"
+                                            required
+                                            className={styles.input}
+                                        />
+                                        <div className={styles.buttonGroup}>
+                                            <button type="submit" className={styles.saveButton}>
+                                                Confirm
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={cancelEmailEdit}
+                                                className={styles.cancelButton}
+                                            >
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </form>
+                                ) : isEmailEditing ? (
                                     <form onSubmit={handleEmailUpdate} className={styles.editForm}>
                                         <input
                                             type="email"
@@ -205,14 +288,11 @@ export const Profile = () => {
                                         />
                                         <div className={styles.buttonGroup}>
                                             <button type="submit" className={styles.saveButton}>
-                                                Save
+                                                Update
                                             </button>
                                             <button
                                                 type="button"
-                                                onClick={() => {
-                                                    setIsEmailEditing(false);
-                                                    setNewEmail('');
-                                                }}
+                                                onClick={cancelEmailEdit}
                                                 className={styles.cancelButton}
                                             >
                                                 Cancel
@@ -220,20 +300,25 @@ export const Profile = () => {
                                         </div>
                                     </form>
                                 ) : (
-                                    <>
-                                        <span>{user?.email}</span>
-                                        <button
-                                            onClick={() => {
-                                                setIsEmailEditing(true);
-                                                setNewEmail(user?.email || '');
-                                            }}
-                                            className={styles.editButton}
-                                        >
-                                            Edit
-                                        </button>
-                                    </>
+                                    <div className={styles.emailContainer}>
+                                        <span className={styles.emailText}>{user?.email}</span>
+                                        {!isGoogleUser && (
+                                            <button
+                                                onClick={() => {
+                                                    setIsEmailEditing(true);
+                                                    setNewEmail(user?.email || '');
+                                                }}
+                                                className={styles.editButton}
+                                            >
+                                                Edit
+                                            </button>
+                                        )}
+                                    </div>
                                 )}
-                            </p>
+                                {isGoogleUser && !isEmailEditing && (
+                                    <span className={styles.providerTag}>Google Account</span>
+                                )}
+                            </div>
                         </div>
                     </div>
 
