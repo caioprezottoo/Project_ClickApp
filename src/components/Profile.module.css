@@ -46,11 +46,13 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.profileSection {
-    margin-bottom: clamp(1rem, 3vh, 2rem);
+.profileSection,
+.dataManagementSection {
+    margin-bottom: clamp(1.5rem, 3vh, 2rem);
 }
 
-.profileSection h2 {
+.profileSection h2,
+.dataManagementSection h2 {
     font-size: clamp(1.1rem, 3vw, 1.4rem);
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
@@ -70,13 +72,13 @@
 
 .emailContainer {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     width: 100%;
 }
 
 .emailText {
     word-break: break-all;
+    padding: 0.5rem 0;
 }
 
 .label {
@@ -87,16 +89,6 @@
     font-size: clamp(0.875rem, 2.5vw, 1rem);
 }
 
-.editButton {
-    background-color: transparent;
-    color: var(--blue);
-    border: none;
-    padding: 0.25rem 0.5rem;
-    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-    cursor: pointer;
-    white-space: nowrap;
-}
-
 .providerTag {
     display: inline-block;
     background-color: rgba(38, 101, 237, 0.1);
@@ -105,69 +97,30 @@
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     margin-top: 0.5rem;
+    align-self: flex-start;
     text-align: center;
 }
 
-.reauthMessage {
-    color: var(--white);
-    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-    margin-bottom: 0.75rem;
-    text-align: left;
-    opacity: 0.9;
-    font-weight: normal;
-    font-family: var(--font-content);
-}
-
-.editForm {
-    margin-top: 0.5rem;
+.dataButton {
     width: 100%;
-}
-
-.input {
-    width: 100%;
-    padding: clamp(0.5rem, 2vh, 0.75rem);
+    padding: clamp(0.6rem, 2vh, 0.75rem);
     margin-bottom: 0.75rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--white);
-    border-radius: 4px;
-    font-size: clamp(0.875rem, 2.5vw, 1rem);
-}
-
-.input:focus {
-    outline: none;
-    border-color: var(--blue);
-}
-
-.buttonGroup {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-}
-
-.saveButton {
-    background-color: var(--blue);
-    color: var(--white);
-    border: none;
-    padding: clamp(0.5rem, 2vh, 0.75rem) 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: clamp(0.875rem, 2.5vw, 1rem);
-    flex: 1;
-    min-width: 80px;
-}
-
-.cancelButton {
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--white);
     border: none;
-    padding: clamp(0.5rem, 2vh, 0.75rem) 1rem;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     cursor: pointer;
-    font-size: clamp(0.875rem, 2.5vw, 1rem);
-    flex: 1;
-    min-width: 80px;
+    transition: background-color 0.3s;
+}
+
+.dataButton:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dataButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .actionButtons {
@@ -189,6 +142,12 @@
     font-family: var(--font-random);
 }
 
+.logoutButton:disabled,
+.deleteButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .logoutButton {
     background: var(--gradient);
 }
@@ -200,8 +159,8 @@
 .confirmDelete {
     padding: clamp(0.75rem, 2vh, 1rem);
     background-color: rgba(231, 76, 60, 0.2);
-    border-radius: 4px;
-    margin-top: 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
 }
 
 .confirmDelete p {
@@ -209,6 +168,12 @@
     text-align: center;
     color: var(--red);
     font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 .confirmDeleteButton {
@@ -224,17 +189,39 @@
     min-width: 100px;
 }
 
+.confirmDeleteButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cancelButton {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border: none;
+    padding: clamp(0.5rem, 2vh, 0.75rem) 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    flex: 1;
+    min-width: 80px;
+}
+
+.cancelButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .message {
     padding: clamp(0.75rem, 2vh, 1rem);
     margin-bottom: clamp(1rem, 3vh, 1.5rem);
-    border-radius: 4px;
+    border-radius: 8px;
     text-align: center;
     font-size: clamp(0.875rem, 2.5vw, 0.9rem);
 }
 
 .success {
-    background-color: rgba(46, 204, 113, 0.2);
-    color: var(--blue);
+    background: var(--gradient);
+    color: var(--white);
 }
 
 .error {
@@ -242,99 +229,9 @@
     color: var(--red);
 }
 
-/* Warning popup styles for AddMovie component */
-.warningOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    animation: fadeIn 0.3s ease;
-}
-
-.warningPopup {
-    width: 90%;
-    max-width: 450px;
-    background: #222;
-    border-radius: 1rem;
-    padding: clamp(1rem, 3vw, 2rem);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 60, 60, 0.3);
-    animation: slideIn 0.3s ease, slideOut 0.5s ease 2.5s forwards;
-}
-
-.warningTitle {
-    color: var(--red, #ff3c3c);
-    font-family: var(--font-title);
-    font-size: clamp(1.25rem, 4vw, 1.5rem);
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.warningText {
+.info {
+    background: var(--gradient);
     color: var(--white);
-    font-family: var(--font-content);
-    font-size: clamp(0.875rem, 2.5vw, 1rem);
-    line-height: 1.5;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.warningButton {
-    display: block;
-    width: 60%;
-    margin: 1.5rem auto 0;
-    padding: 0.75rem 1.5rem;
-    background: var(--red, #ff3c3c);
-    color: white;
-    border: none;
-    border-radius: 2rem;
-    font-family: var(--font-content);
-    font-size: clamp(0.875rem, 2.5vw, 1rem);
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.warningButton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(255, 60, 60, 0.5);
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideOut {
-    from {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(20px);
-        opacity: 0;
-    }
 }
 
 @media (max-height: 600px) {
@@ -346,7 +243,8 @@
         margin-bottom: 0.75rem;
     }
 
-    .profileSection {
+    .profileSection,
+    .dataManagementSection {
         margin-bottom: 0.75rem;
     }
 

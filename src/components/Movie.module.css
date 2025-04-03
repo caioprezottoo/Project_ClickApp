@@ -2,16 +2,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-width: 22rem;
+    width: 22rem;
     margin-bottom: 1rem;
 }
 
 .movieImage {
     width: 100%;
-    height: auto;
+    height: 100%;
     aspect-ratio: 2/3;
-    max-height: 50vh;
+    height: 60vh;
     border-radius: 22px;
     margin-bottom: 0;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8));
@@ -24,7 +23,7 @@ h2 {
     font-family: var(--font-content);
     font-weight: 400;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8));
-    max-width: 100%;
+    width: 100%;
     overflow-wrap: break-word;
     line-height: 1.4;
     min-height: 2.8rem;

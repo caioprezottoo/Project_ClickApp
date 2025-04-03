@@ -28,8 +28,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 100%;
-    max-height: 70vh;
+    height: 70vh;
     overflow: visible;
 }
 
@@ -38,7 +37,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: clamp(0.5rem, 2vw, 1rem);
+    gap: clamp(1.3rem, 2vw, 1rem);
     margin-bottom: 2rem;
     width: 100%;
     max-width: 100%;
@@ -67,7 +66,6 @@
 .watchedButton {
     background: var(--gradient);
     padding: 0 1.3rem;
-
 }
 
 .didntwatchButton {

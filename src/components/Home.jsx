@@ -17,30 +17,43 @@ export const Home = () => {
     const [showFavoriteAnimation, setShowFavoriteAnimation] = useState(false);
 
     useEffect(() => {
-        const fetchUnreviewedMovies = async () => {
+        const fetchMovies = async () => {
             try {
                 const userId = auth.currentUser.uid;
 
+                // Get user's reviewed movie IDs
                 const reviewsRef = collection(db, 'reviews');
                 const reviewsQuery = query(reviewsRef, where('userId', '==', userId));
                 const reviewSnapshot = await getDocs(reviewsQuery);
                 const reviewedMovieIds = reviewSnapshot.docs.map(doc => doc.data().movieId);
 
-                const moviesCollection = collection(db, 'movies');
-                const movieSnapshot = await getDocs(moviesCollection);
-                const movieList = movieSnapshot.docs
+                // Get movies from public collection
+                const publicMoviesCollection = collection(db, 'movies');
+                const publicMovieSnapshot = await getDocs(publicMoviesCollection);
+                const publicMovies = publicMovieSnapshot.docs
                     .filter(doc => !reviewedMovieIds.includes(doc.id))
                     .map(doc => ({ id: doc.id, ...doc.data() }));
 
-                setMovies(movieList);
+                // Get user's personal movies
+                const userMoviesCollection = collection(db, 'moviesUser');
+                const userMoviesQuery = query(userMoviesCollection, where('addedBy', '==', userId));
+                const userMovieSnapshot = await getDocs(userMoviesQuery);
+                const userMovies = userMovieSnapshot.docs
+                    .filter(doc => !reviewedMovieIds.includes(doc.id))
+                    .map(doc => ({ id: doc.id, ...doc.data() }));
+
+                // Combine both collections
+                const allMovies = [...publicMovies, ...userMovies];
+
+                setMovies(allMovies);
                 setIsLoading(false);
             } catch (error) {
-                console.error('Error fetching unreviewed movies:', error);
+                console.error('Error fetching movies:', error);
                 setIsLoading(false);
             }
         };
 
-        fetchUnreviewedMovies();
+        fetchMovies();
     }, []);
 
     const handleDidntWatch = () => {
@@ -93,11 +106,11 @@ export const Home = () => {
                     setShowFavoriteAnimation(false);
                 }, 1000);
             } else {
-                alert('This movie is already in your favorites!');
+                console.log('This movie is already in your favorites!');
             }
         } catch (error) {
             console.error('Error adding to favorites:', error);
-            alert('Failed to add to favorites. Please try again.');
+            console.log('Failed to add to favorites. Please try again.');
         } finally {
             setAddingToFavorites(false);
         }
@@ -155,7 +168,6 @@ export const Home = () => {
                     <EyeSlash size={32} /> Didn't Watch
                 </button>
             </div>
-            {showFavoriteAnimation}
             <NavBar />
         </div>
     );

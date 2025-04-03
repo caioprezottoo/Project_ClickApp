@@ -35,7 +35,9 @@ export const AddMovie = () => {
             setIsSubmitting(true);
             setMessage({ text: '', isError: false });
 
-            await addDoc(collection(db, 'movies'), {
+            // Add to the moviesUser collection instead of movies
+            // This way it's only visible to the current user
+            await addDoc(collection(db, 'moviesUser'), {
                 title: title.trim(),
                 cover: cover.trim(),
                 addedBy: auth.currentUser?.uid || 'anonymous',
@@ -136,7 +138,7 @@ export const AddMovie = () => {
                     <div className={styles.warningPopup} onClick={(e) => e.stopPropagation()}>
                         <h3 className={styles.warningTitle}>⚠️ Important Warning</h3>
                         <p className={styles.warningText}>
-                            Please add a real movie to our database.
+                            The movies you add will only be visible to you.
                         </p>
                         <button className={styles.warningButton} onClick={closeWarningPopup}>
                             I Understand
