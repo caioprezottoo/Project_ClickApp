@@ -97,7 +97,14 @@
     display: flex;
 }
 
-.deleteButton {
+.actionButtons {
+    display: flex;
+    gap: clamp(0.25rem, 1vw, 0.5rem);
+    margin-left: auto;
+}
+
+.deleteButton,
+.favoriteButton {
     background-color: transparent;
     color: white;
     border: none;
@@ -106,9 +113,41 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
     cursor: pointer;
-    margin-left: auto;
+}
+
+.favoriteButton:hover {
+    color: var(--red);
+    transform: scale(1.1);
+}
+
+.favoriteButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.favorited {
+    color: var(--red);
+}
+
+.favoriteAnimation {
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 @media (max-height: 700px) {
@@ -140,11 +179,13 @@
         height: 14px;
     }
 
-    .deleteButton {
+    .deleteButton,
+    .favoriteButton {
         padding: 0.3rem;
     }
 
-    .deleteButton svg {
+    .deleteButton svg,
+    .favoriteButton svg {
         width: 14px;
         height: 14px;
     }
