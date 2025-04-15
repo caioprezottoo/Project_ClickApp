@@ -51,7 +51,8 @@ Click is a modern, responsive web application designed to help movie enthusiasts
 - Firebase Firestore Database
 - Real-time data synchronization
 
-## Project Structure
+## Project Structure 
+```markdown
 src/
 ├── assets/             Images and static files
 ├── components/         UI components
@@ -60,6 +61,7 @@ src/
 ├── global.css          Global CSS variables and styles
 ├── App.jsx             Main app component with routes
 └── main.jsx            Application entry point
+```
 
 ## Key Components
 - App.jsx: Main application component with routing
