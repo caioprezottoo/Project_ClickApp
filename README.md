@@ -51,16 +51,27 @@ Click is a modern, responsive web application designed to help movie enthusiasts
 - Firebase Firestore Database
 - Real-time data synchronization
 
-## Getting Started
+## Project Structure
+src/
+├── assets/             # Images and static files
+├── components/         # UI components
+├── config/             # Firebase configuration
+├── context/            # React context for state management
+├── global.css          # Global CSS variables and styles
+├── App.jsx             # Main app component with routes
+└── main.jsx            # Application entry point
 
-### Prerequisites
-- Node.js (v14 or later)
-- npm or yarn
-- Firebase account
+## Key Components
+- App.jsx: Main application component with routing
+- AuthContext.jsx: Context provider for authentication state
+- Home.jsx: Movie discovery with like/dislike functionality
+- Reviewed.jsx: Display and manage reviewed movies
+- Favorites.jsx: Saved favorite movies
+- AddMovie.jsx: Add custom movies to your collection
+- Profile.jsx: User profile and account management
 
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/your-username/click-movie-app.git
-cd click-movie-app
+## Acknowledgments
+- React
+- Firebase
+- Phosphor Icons
+- React Router
